@@ -28,33 +28,6 @@ The system allows customers to consume products, tracks usage asynchronously, an
 
 ---
 
-## Project Structure
-
-```
-src/
-├── app.ts
-├── index.ts
-├── prisma.ts
-├── routes/
-│   ├── usage.routes.ts
-│   ├── wallet.routes.ts
-│   ├── customer.routes.ts
-│   ├── product.routes.ts
-│   └── event.routes.ts (optional / audit)
-├── services/
-│   ├── billing.service.ts
-│   └── wallet.service.ts
-└── cron/
-    └── billing.cron.ts
-
-tests/
-├── billing.test.ts
-├── basic.test.ts
-└── setup.ts
-```
-
----
-
 ## Setup & Run
 
 ### 1. Install dependencies
