@@ -1,0 +1,32 @@
+{
+  "name": "netnut-usage-billing-system",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "seed": "ts-node prisma/seed.ts",
+    "test": "cross-env NODE_ENV=test DATABASE_URL=\"file:./prisma/test.db\" jest --runInBand"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "node-cron": "^3.0.3"
+  },
+  "devDependencies": {
+    "@prisma/client": "^5.22.0",
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
+    "@types/supertest": "^2.0.16",
+    "cross-env": "^7.0.3",
+    "jest": "^29.7.0",
+    "prisma": "^5.22.0",
+    "supertest": "^6.3.4",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.5.4"
+  }
+}

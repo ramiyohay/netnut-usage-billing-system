@@ -1,0 +1,25 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Build output
+dist/
+
+# Environment variables
+.env
+
+# Prisma / SQLite databases
+prisma/dev.db
+prisma/test.db
+
+# Prisma generated client (optional, usually ignored)
+node_modules/.prisma/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+.vscode/
+.i

@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Customer {
+  id        String       @id @default(uuid())
+  name      String
+  wallet    Wallet?
+  usage     UsageEvent[]
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
+model Product {
+  id              String       @id @default(uuid())
+  name            String
+  unitPriceCents  Int
+  usage           UsageEvent[]
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+}
+
+model Wallet {
+  id            String               @id @default(uuid())
+  customerId    String               @unique
+  balanceCents  Int
+  customer      Customer             @relation(fields: [customerId], references: [id])
+  txns          WalletTransaction[]
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @updatedAt
+}
+
+model UsageEvent {
+  id            String               @id @default(uuid())
+  customerId    String
+  productId     String
+  units         Int
+  costCents     Int?
+  processedAt   DateTime?
+  customer      Customer             @relation(fields: [customerId], references: [id])
+  product       Product              @relation(fields: [productId], references: [id])
+  transactions  WalletTransaction[]
+  createdAt     DateTime             @default(now())
+
+  @@index([processedAt])
+}
+
+model WalletTransaction {
+  id            String        @id @default(uuid())
+  walletId      String
+  amountCents   Int
+  type          String
+  usageEventId  String?
+  wallet        Wallet        @relation(fields: [walletId], references: [id])
+  usageEvent    UsageEvent?   @relation(fields: [usageEventId], references: [id])
+  createdAt     DateTime      @default(now())
+}
