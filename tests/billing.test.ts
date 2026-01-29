@@ -24,7 +24,7 @@ describe("billing flow", () => {
 
     const product = await prisma.product.create({
       data: {
-        name: "API Call",
+        name: "Product Z",
         unitPriceCents: 200,
       },
     });
@@ -57,7 +57,7 @@ describe("billing flow", () => {
 
     const product = await prisma.product.create({
       data: {
-        name: "SMS",
+        name: "Product Y",
         unitPriceCents: 500,
       },
     });
@@ -103,7 +103,7 @@ describe("billing flow", () => {
 
     const product = await prisma.product.create({
       data: {
-        name: "Email",
+        name: "Product X",
         unitPriceCents: 300,
       },
     });
